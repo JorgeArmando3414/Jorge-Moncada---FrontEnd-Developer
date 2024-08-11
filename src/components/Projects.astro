@@ -1,0 +1,121 @@
+---
+import Html from "./Html.astro";
+import Css from "./Css.astro";
+import Javascript from "./Javascript.astro";
+import Bootstrap from "./Bootstrap.astro";
+
+const TAGS = {
+  HTML: {
+    name: "HTML5",
+    class: "bg-orange-400 text-white",
+    icon: Html
+  },
+  CSS: {
+    name: "CSS3",
+    class: "bg-blue-400 text-white",
+    icon: Css
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-yellow-400 text-black",
+    icon: Javascript
+  },
+  BOOTSTRAP: {
+    name: "Bootstrap",
+    class: "bg-purple-400 text-white",
+    icon: Bootstrap
+  },
+}
+
+const PROJECTS = [
+  {
+    title: "LionRig Studio",
+    description: "Página Web realizada para LionRig Studio con un diseño que capta la identidad de la empresa a la vez que ofrece una agradable experiencia para el usuario.",
+    technologies: [TAGS.HTML ,TAGS.BOOTSTRAP, TAGS.JAVASCRIPT],
+    link: "https://www.lionrigstudio.com/",
+    image: ["Lionrig1.png","Lionrig2.png","Lionrig3.png"],
+  },
+  {
+    title: "GEOTRANSFER",
+    description: "Página web del grupo de investigación geológica Geotransfer. Hecha a medida acorde a sus necesidades para compartir sus aportes y servicios con el resto de la comunidad científica.",
+    technologies: [TAGS.HTML , TAGS.CSS, TAGS.JAVASCRIPT],
+    link: "https://geotransfer.unizar.es",
+    image: ["Geotransfer1.png","Geotransfer2.png","Geotransfer3.png"],
+  },
+];
+---
+
+<div class="flex flex-col gap-16">
+  {
+    PROJECTS.map((project) => (
+      <div class="flex flex-col md:flex-row justify-between gap-8">
+        <div class="flex flex-col w-full md:max-w-[40%] gap-4 justify-between">
+          <h2 class="text-lg font-semibold text-green-500">{project.title}</h2>
+          <h3 class="dark:text-gray-300">{project.description}</h3>
+          <nav class="flex flex-row gap-3">
+            {project.technologies.map((technology) => (
+              <technology.icon class="size-6"/>
+          ))}
+          </nav>
+          <a
+            target="_blank"
+            rel="noreferrer noopener"
+            href={project.link}
+            class="flex flex-row gap-2 transition rounded-md dark:bg-black dark:border-gray-200 dark:text-white hover:bg-black bg-gray-200 border-[1px] border-gray-400 hover:border-gray-200 text-black hover:text-white dark:hover:bg-gray-200 dark:hover:border-gray-600 dark:hover:text-gray-800 text-center w-fit px-4 py-1 drop-shadow-lg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+              />
+            </svg>
+            Link
+          </a>
+        </div>
+        {/* <img src={project.image} alt="descripcion del proyecto" /> */}
+        <div id="default-carousel" class="relative w-full md:w-[55%] " data-carousel="static">
+          <!-- Carousel wrapper -->
+          <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
+              <!-- Item 1 -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img src={project.image[0]} class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={project.description}>
+              </div>
+              <!-- Item 2 -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img src={project.image[1]} class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={project.description}>
+              </div>
+              <!-- Item 3 -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img src={project.image[2]} class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={project.description}>
+              </div>
+          </div>
+          <!-- Slider controls -->
+          <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-500/30 dark:bg-gray-800/30  group-hover:bg-gray-800/60 group-focus:outline-none">
+                  <svg class="w-4 h-4 text-white  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                  </svg>
+                  <span class="sr-only">Previous</span>
+              </span>
+          </button>
+          <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:outline-none">
+                  <svg class="w-4 h-4 text-white  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                  </svg>
+                  <span class="sr-only">Next</span>
+              </span>
+          </button>
+        </div>
+      </div>
+    ))
+  }
+</div>

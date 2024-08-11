@@ -1,0 +1,37 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "Julio 2024",
+    title: "Desarrollador Front-End",
+    company: "Lionrig Studio",
+    description:
+      "Desarrollo de aplicaciones web a medida tanto para clientes como para la compañía usando tecnologías como JavaScript, Bootstrap, React y TailwindCSS.",
+  },
+  {
+    date: "Abril 2022",
+    title: "Administrador de sistemas",
+    company: "Hiberus",
+    description:
+      "Monitorización y gestión de alertas en sistemas de múltiples clientes. Resolución de incidencias a través de un sistema de ticketing y soporte telefónico.",
+  },
+  {
+    date: "Julio 2021",
+    title: "Técnico informático",
+    company: "Ecomputer S.L.",
+    description:
+      "Reparación y mantenimiento de equipos informáticos. Asistencia a clientes en tienda proporcionando una buena experiencia de compra.",
+  },
+];
+---
+
+<ol class="relative border-s-2 border-gray-200 dark:border-gray-400">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="mb-10 ms-6">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
